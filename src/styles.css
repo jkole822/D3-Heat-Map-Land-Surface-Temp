@@ -1,0 +1,31 @@
+body {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.svg-container {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 960px;
+}
+
+.svg-content {
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px 1px black;
+}
+
+.tooltip {
+	position: absolute;
+	text-align: center;
+	padding: 10px;
+
+	color: black;
+	font-weight: 600;
+	border-radius: 5px;
+	font-size: 0.9em;
+	box-shadow: 1px 1px 10px 1px black;
+}
+
+.cell:hover {
+	stroke: black;
+}
