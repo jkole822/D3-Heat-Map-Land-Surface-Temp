@@ -69,6 +69,8 @@ const renderData = async () => {
 		)}℃ <br />  ${format(variance)}℃`;
 	};
 
+	// Scales
+
 	const xScale = d3
 		.scaleLinear()
 		.domain([
@@ -81,10 +83,6 @@ const renderData = async () => {
 		.scaleLinear()
 		.domain([0.5, 12.5])
 		.range([padding, h - padding]);
-
-	const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
-
-	const yAxis = d3.axisLeft(yScale).tickFormat((d, i) => yAxisTickLabels[i]);
 
 	// SVG Container
 	const svg = d3
@@ -150,6 +148,8 @@ const renderData = async () => {
 		});
 
 	// x-axis
+	const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
+
 	svg
 		.append('g')
 		.attr('id', 'x-axis')
@@ -166,6 +166,8 @@ const renderData = async () => {
 		.text('Year');
 
 	// y-axis
+	const yAxis = d3.axisLeft(yScale).tickFormat((d, i) => yAxisTickLabels[i]);
+
 	svg
 		.append('g')
 		.attr('id', 'y-axis')
@@ -183,7 +185,6 @@ const renderData = async () => {
 		.text('Month');
 
 	// Legend
-
 	const threshold = d3
 		.scaleThreshold()
 		.domain([2.8, 3.9, 5.0, 6.1, 7.2, 8.3, 9.5, 10.6, 11.7, 12.8])
@@ -222,7 +223,7 @@ const renderData = async () => {
 		.attr('transform', `translate( ${w / 12} , ${h - padding / 1.7})`);
 
 	legend.select('.domain').remove();
-	console.log(threshold.invertExtent(threshold.range()[2]));
+
 	legend
 		.selectAll('rect')
 		.data(
