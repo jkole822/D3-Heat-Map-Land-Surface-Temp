@@ -134,17 +134,17 @@ const renderData = async () => {
 		.attr('data-year', d => d.year)
 		.attr('data-temp', d => baseTemp + d.variance)
 		.style('fill', d => renderCellFill(baseTemp + d.variance))
-		.on('mouseover', d => {
-			tooltip.transition().duration(200).style('opacity', 0.6);
+		.on('mousemove', d => {
+			tooltip.transition().style('opacity', 0.6);
 			tooltip
 				.html(renderTooltip(d.year, d.month, d.variance))
-				.style('left', `${d3.event.pageX + 24}px`)
-				.style('top', `${d3.event.pageY - 36}px`)
+				.style('left', `${d3.event.pageX}px`)
+				.style('top', `${d3.event.pageY + 30}px`)
 				.style('background-color', renderCellFill(baseTemp + d.variance))
 				.attr('data-year', d.year);
 		})
 		.on('mouseout', d => {
-			tooltip.transition().duration(200).style('opacity', 0);
+			tooltip.transition().style('opacity', 0);
 		});
 
 	// x-axis
